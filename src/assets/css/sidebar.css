@@ -1,0 +1,111 @@
+#sidenav-collapse-main {
+    height: 82vh;
+}
+
+.sidebar {
+    background-color: #12203e;
+    background: -webkit-linear-gradient(180deg, #13203f 0, #90035b 90%);
+    background: -moz-linear-gradient(180deg, #13203f 0, #90035b 90%);
+    background: -o-linear-gradient(180deg, #13203f 0, #90035b 90%);
+    background: linear-gradient(180deg, #13203f 0, #90035b 90%);
+}
+
+.sidebar .text-muted {
+    color: #86c3ff !important;
+}
+
+.sidebar .navbar-nav {
+    margin-left: 0 !important;
+    width: 100% !important;
+}
+
+.sidebar .navbar-nav .nav-item {
+    margin-left: 0 !important;
+}
+
+.sidebar .navbar-nav ul,
+.sidebar .navbar-nav li,
+.sidebar .navbar-nav li>a {
+    width: 100% !important;
+}
+
+.sidebar .sidebar-fade-top {
+    width: 100%;
+    z-index: 999;
+    -webkit-box-shadow: 0px 5px 30px 30px rgba(29, 32, 66, 0.97);
+    box-shadow: 0px 5px 30px 30px rgba(29, 32, 66, 0.97);
+    transition: all 100ms linear;
+    opacity: 0.2;
+}
+
+.sidebar .sidebar-fade-top.show {
+    opacity: 1;
+    transition-duration: 0;
+}
+
+.sidebar .sidebar-bottom {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.sidebar .sidebar-fade-bottom {
+    width: 100%;
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    margin-top: 40px;
+    -webkit-box-shadow: 0px 20px 20px 20px #141631;
+    box-shadow: 0px 20px 20px 20px #141631;
+}
+
+.sidebar .nav-link {
+    font-weight: 600;
+}
+
+.sidebar .nav-link i {
+    color: #fff;
+}
+
+.sidebar .navbar-nav .nav-link,
+.sidebar .navbar-nav .nav-link:hover,
+.sidebar .navbar-nav .nav-link:active,
+.sidebar .navbar-nav .nav-link:focus {
+    color: #ffffff;
+}
+
+.navbar-brand {
+    background: transparent !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.sidebar .router-link-exact-active {
+    background: -webkit-linear-gradient(82deg, #d60486 0, #700a53 100%);
+    background: -moz-linear-gradient(82deg, #d60486 0, #700a53 100%);
+    background: -o-linear-gradient(82deg, #d60486 0, #700a53 100%);
+    background: linear-gradient(82deg, #d60486 0, #700a53 100%);
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.navbar-vertical .navbar-nav .nav-link>i {
+    min-width: 1.62rem !important;
+}
+
+@media (min-width: 768px) {
+    .sidebar.navbar-vertical.navbar-expand-md .navbar-nav .nav-link {
+        padding: 0.65rem 1rem;
+    }
+
+    .sidebar .nav-link-child {
+        padding: 0.65rem 1.5rem 0.65rem 1.3rem !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .sidebar .navbar-collapse.collapse, .navbar-collapse.collapsing, .navbar-collapse.show {
+        height: 96vh !important;
+    }
+}
