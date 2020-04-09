@@ -8,11 +8,16 @@ import {
 
 import "./assets/css/base.css";
 import "./assets/css/custom.css";
-import "./assets/css/sidebar.css";
 
-import App from './containers/App/App2';
+// to help migration Vue -> React.
+// start by using the bootstarp js stuff, data-toggle="collapse"
+import 'jquery/dist/jquery.js';
+import '@popperjs/core/dist/umd/popper.js';
+import 'bootstrap/dist/js/bootstrap.js';
+
+import App from './containers/App/App';
 import * as serviceWorker from './serviceWorker';
-import WebApi from 'components/Global/WebApi'
+import WebApi from './components/Global/WebApi'
 import store from './Store'
 
 

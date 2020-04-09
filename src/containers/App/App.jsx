@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import {
-    Route,
-    Redirect
-} from 'react-router-dom';
 
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import Sidebar from './components/Sidebar/Sidebar';
+import ApplicationHeader from './components/ApplicationHeader';
+import ApplicationFooter from './components/ApplicationFooter';
+import ApplicationNavigation from './components/ApplicationNavigation';
 import LoginModal from 'components/Modal/LoginModal';
 import InactivityModal from 'components/Modal/InactivityModal';
-import {appRoutes, authenticated} from 'routes/app'
+import { authenticated } from 'routes/app'
+
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "styles" }]*/
+/* styles is used silently */
+import styles from './App.css';
 
 
 class App extends Component {
@@ -20,7 +20,6 @@ class App extends Component {
         this.inactivityModal = React.createRef();
 
         this.componentDidMount = this.componentDidMount.bind( this );
-        this.handleNotificationClick = this.handleNotificationClick.bind( this );
 
         this.state = {
             _notificationSystem: null
@@ -28,8 +27,6 @@ class App extends Component {
     }
 
     
-    handleNotificationClick( position ) {
-    }
     
     componentDidMount() {
         if(!authenticated()) {
@@ -51,38 +48,18 @@ class App extends Component {
     render() {
         return (
 
-            <div className="wrapper">
-                <Sidebar {...this.props} />
-                <div id="main-panel" className="main-panel">
-                    <Header {...this.props} />
+                <>
+                <ApplicationNavigation {...this.props} />
+                <div className="content">
+                    <ApplicationHeader  {...this.props} />
                     <LoginModal ref={this.loginModal}/>
-                    <InactivityModal ref={this.inactivityModal}/>
-                         {
-                            appRoutes.map(( prop, key ) => {
-                                if ( prop.name === "Notifications" )
-                                    return (
-                                        <Route
-                                            path={prop.path}
-                                            key={key}
-                                            render={routeProps =>
-                                                <prop.component
-                                                    {...routeProps}
-                                                    handleClick={this.handleNotificationClick}
-                                                />}
-                                        />
-                                    );
-                                if ( prop.redirect )
-                                    return (
-                                        <Redirect from={prop.path} to={prop.to} key={key} />
-                                    );
-                                return (
-                                    <Route path={prop.path} render={() => ( ( this.isAuthenticated() ) ? ( <prop.component constructorArgs={prop.constructorArgs} /> ) : ( <Redirect to={{ pathname: '/login' }} /> ) )} key={key} />
-                                );
-                            } )
-                        }
-                    <Footer />
+                    <InactivityModal ref={this.inactivityModal} />
+                    <div className="container-fluid">
+                        <slot></slot>
+                        <ApplicationFooter  {...this.props} />
+                    </div>
                 </div>
-            </div>
+            </>
         );
     }
 }

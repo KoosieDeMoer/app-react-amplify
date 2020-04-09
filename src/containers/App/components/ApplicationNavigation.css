@@ -94,6 +94,22 @@
     min-width: 1.62rem !important;
 }
 
+
+
+.link-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+.link-button:hover,
+.link-button:focus {
+text-decoration: none;
+}
+
 @media (min-width: 768px) {
     .sidebar.navbar-vertical.navbar-expand-md .navbar-nav .nav-link {
         padding: 0.65rem 1rem;
@@ -104,8 +120,41 @@
     }
 }
 
+
+
+
 @media (max-width: 767.98px) {
     .sidebar .navbar-collapse.collapse, .navbar-collapse.collapsing, .navbar-collapse.show {
         height: 96vh !important;
+        
     }
+    
+    #navbar-main {
+        padding: 0.3rem 0;
+        max-height: 70px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+    }
+
+    #sidenav-main {
+        background: transparent;
+        max-height: 70px;
+        position: absolute;
+        top: 0.1rem;
+        left: 0.05rem;
+        width: auto;
+    }
+
+    #sidenav-main {
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+
+    #navbar-main .fa {
+        margin-top: 9px;
+    }
+    
 }
+    
