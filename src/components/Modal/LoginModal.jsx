@@ -47,7 +47,7 @@ class LoginModal extends React.Component {
 	                grant: 'password'
 	            }).then((response) => {
 	                console.log('handleSubmit response', response);
-	                window.cache.auth.access = response.data
+	                window.cache.auth.access = response.data.data
 	                window.cache.storage.set('access', window.cache.auth.access)
 	                this.testAuthenticationToken(false)
 	            }).catch((error) => {
@@ -62,7 +62,7 @@ class LoginModal extends React.Component {
       testAuthenticationToken(silentCheck) {
           window.cache.WebApi.accounts().find().then((response) => {
               console.log('testAuthenticationToken', response)
-              window.cache.auth.account = response.data
+              window.cache.auth.account = response.data.data
               window.cache.auth.validated = true
               this.loginSucceeded(response)
           }).catch((error) => {

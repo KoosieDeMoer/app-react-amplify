@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import Axios from 'axios'
 
 const basePath = 'https://api-sandbox.slvrcld.com/v1';
 
@@ -8,6 +9,10 @@ class WebApi extends Component {
         super( props );
         this.state = {
         };
+        this.client = Axios.create({
+            baseURL: basePath
+        })
+
      }
 
 
@@ -58,33 +63,16 @@ class WebApi extends Component {
     request(method, url, q, data, uploadProgressHandler) {
         url += this.buildQueryParams(q)
 
-        let parameters = {
-                    method: method,
-                    headers: this.buildHeaders()
-                };
-            
-        if (method === 'post' || method === 'put' ) {
-            parameters.body = JSON.stringify(data);
-        }
-
-         return new Promise((resolve, reject) => {
-            fetch(basePath + url, parameters).then((response) => {
-                response.json()
-                    .then((json) => {
-                        if(json.meta.status === 'success') {
-                            return resolve(json)
-                        } else {
-                            return reject(json.meta.message)
-                        }
-                    }).catch((error) => {
-                        return reject(error)
-                    })
-                    
-                })
-          })
-
-        
+        return this.client({
+            method,
+            url,
+            data,
+            headers: this.buildHeaders(),
+            uploadProgressHandler: uploadProgressHandler
+        })
     }
+    
+    
 
     /*
     |--------------------------------------------------------------------------
