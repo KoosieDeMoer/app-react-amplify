@@ -15,6 +15,8 @@ import styles from './ApplicationNavigation.css';
 class ApplicationNavigation extends Component {
     constructor(props) {
         super(props);
+        console.log('ApplicationNavigation constructor()  window.cache.auth.account', window.cache.auth.account);
+        
         this.state = {
             scrollbarFadeEnabled: false,
             scrollbarOptions: {
@@ -23,12 +25,13 @@ class ApplicationNavigation extends Component {
                 maxScrollbarLength: 500,
                 suppressScrollX: true,
                 height: '80vh'
-            }
+            },
+            user: ((window.cache.auth.account !== '') ? new User(window.cache.auth.account) : null),
+            items: (window.cache.auth.account !== '') ? this.items() : []
         };
 
-        this.user = new User(window.cache.auth.account);
-
-        //some refs
+        console.log('ApplicationNavigation constructor() this.state', this.state);
+         //some refs
         this.scrollbarRef = React.createRef();
 
         
@@ -88,9 +91,9 @@ class ApplicationNavigation extends Component {
                 title: 'Claims',
                 icon: 'fa fa-briefcase',
                 condition: () => {
-                    return this.user.hasAbilityTo('claim:create') ||
-                        this.user.hasAbilityTo('claim:view:own') ||
-                        this.user.hasAbilityTo('claim:view:division')
+                    return this.state.user.hasAbilityTo('claim:create') ||
+                        this.state.user.hasAbilityTo('claim:view:own') ||
+                        this.state.user.hasAbilityTo('claim:view:division')
                 },
                 children: [
                     {
@@ -105,14 +108,14 @@ class ApplicationNavigation extends Component {
                         title: 'Request',
                         route: 'ClaimProvisionInfo',
                         condition: () => {
-                            return this.user.hasAbilityTo('claim:create')
+                            return this.state.user.hasAbilityTo('claim:create')
                         }
                     },
                     {
                         title: 'List',
                         route: 'ClaimsList',
                         condition: () => {
-                            return this.user.hasAbilityTo('claim:view:divisions') || this.user.hasAbilityTo('claim:view:own')
+                            return this.state.user.hasAbilityTo('claim:view:divisions') || this.state.user.hasAbilityTo('claim:view:own')
                         }
                     }]
             },
@@ -122,7 +125,7 @@ class ApplicationNavigation extends Component {
                 icon: 'fa fa-ticket',
                 route: 'SupplierPurchaseNotes',
                 condition: function () {
-                    return this.user.company.type === 'SUPPLIER' || this.user.hasAbilityTo('*')
+                    return this.state.user.company.type === 'SUPPLIER' || this.state.user.hasAbilityTo('*')
                 }.bind(this),
             },
             {
@@ -131,7 +134,7 @@ class ApplicationNavigation extends Component {
                 icon: 'fa fa-truck',
                 route: 'SupplierDispatchQuotes',
                 condition: function () {
-                    return this.user.hasAbilityTo('supplier:dispatch:fees')
+                    return this.state.user.hasAbilityTo('supplier:dispatch:fees')
                 }.bind(this),
             },
             {
@@ -140,7 +143,7 @@ class ApplicationNavigation extends Component {
                 icon: 'fa fa-envelope',
                 route: 'SupplierInventoryQuotes',
                 condition: function () {
-                    return this.user.hasAbilityTo('supplier:inventory:quotes')
+                    return this.state.user.hasAbilityTo('supplier:inventory:quotes')
                 }.bind(this),
             },
             {
@@ -157,7 +160,7 @@ class ApplicationNavigation extends Component {
                 type: 'label',
                 title: 'Internal',
                 condition: function () {
-                    return this.user.globalAdmin !== undefined && this.user.globalAdmin
+                    return this.state.user.globalAdmin !== undefined && this.state.user.globalAdmin
                 }.bind(this),
             },
             {
@@ -165,7 +168,7 @@ class ApplicationNavigation extends Component {
                 title: 'Websocket',
                 icon: 'fa fa-globe',
                 condition: function () {
-                    return this.user.hasAbilityTo('*')
+                    return this.state.user.hasAbilityTo('*')
                 }.bind(this),
                 children: [
                     {
@@ -178,7 +181,7 @@ class ApplicationNavigation extends Component {
                 title: 'Switch Role',
                 icon: 'fa fa-shield',
                 condition: function () {
-                    return this.user.globalAdmin !== undefined && this.user.globalAdmin
+                    return this.state.user.globalAdmin !== undefined && this.state.user.globalAdmin
                 }.bind(this),
                 action: () => {
                     //this.showRoleSwitchModal()
@@ -225,7 +228,7 @@ class ApplicationNavigation extends Component {
                     {/* next was Scrollbar */}
                     <div options={this.state.scrollbarOptions} scrollheight={this.state.scrollbarOptions.height} ref={this.scrollbarRef}>
                         {
-                            this.items().map((item, index) => {
+                            this.state.items.map((item, index) => {
 
                                 /* Group */
                                 if (item.type === 'group' && (item.condition === undefined || item.condition() === true)) {

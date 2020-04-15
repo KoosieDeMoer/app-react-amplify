@@ -1,3 +1,4 @@
+import 'react-app-polyfill/stable';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
@@ -6,11 +7,12 @@ import {
     Switch
 } from 'react-router-dom';
 
+
 import "./assets/css/base.css";
 import "./assets/css/custom.css";
 
 // to help migration Vue -> React.
-// start by using the bootstarp js stuff, data-toggle="collapse"
+// start by using the bootstrap js stuff, data-toggle="collapse"
 import 'jquery/dist/jquery.js';
 import '@popperjs/core/dist/umd/popper.js';
 import 'bootstrap/dist/js/bootstrap.js';

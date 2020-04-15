@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import { Container , Row, Col } from 'react-bootstrap';
-import BasePage from './BasePage';
 
-class Placeholder extends BasePage {
-    
-    constructor(props) {
-        super(props);
-        this.title = "Placeholder";
-        super.propogateState();
-    }
-    
-    
-    
+
+class Home extends Component {
     render() {
         return (
             <div className="content">
@@ -27,4 +18,4 @@ class Placeholder extends BasePage {
     }
 }
 
-export default Placeholder;
+export default Home;

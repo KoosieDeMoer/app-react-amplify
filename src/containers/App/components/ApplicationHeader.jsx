@@ -5,6 +5,8 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 /* styles is used silently */
 import styles from './ApplicationHeader.css';
 
+import PageTitle from 'components/Elements/PageTitle';
+
 class Header extends Component{
     constructor(props){
         super(props);
@@ -12,6 +14,12 @@ class Header extends Component{
                 account: window.cache.auth.account,
                 menu: false
         };
+        
+        this.titlePageRef = new React.createRef();
+        // TODO put in a normal ReactJS location
+        window.titlePage = this.titlePageRef.current;;
+        
+        
         this.logout = this.logout.bind(this);
 
     }
@@ -19,6 +27,8 @@ class Header extends Component{
     logout() {
         // temp stub
         window.cache.storage.set('access', null);
+        window.cache.storage.set('account', null);
+
         window.location.href = "/";
         
     }
@@ -27,6 +37,7 @@ class Header extends Component{
     
     render(){
          return (
+            <div>
                 <Navbar className="shadow-vivid fixed-top" id="navbar-main">
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="justify-content-end" style={{ width: "100%" }}>
@@ -51,6 +62,15 @@ class Header extends Component{
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>
+              <div className="container-fluid bg-secondary pb-2">
+              <div className="row">
+                  <div className="col-12">
+                      <PageTitle ref={this.titlePageRef} class="mt-5 pt-5" />
+                  </div>
+              </div>
+              </div>
+          </div>
+
         );
     }
 }

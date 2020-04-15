@@ -12,6 +12,7 @@
     "mobile-device-detect": "^0.3.3",
     "popper.js": "^1.16.1",
     "react": "^16.13.1",
+    "react-app-polyfill": "^1.0.6",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-notification-system": "^0.3.0",
