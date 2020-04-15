@@ -15,10 +15,11 @@ class PageTitle extends Component{
     
     changePage(page) {
         this.setState({page: page});
+        console.log('changePage this.state.page', this.state.page);
     }
     
     render(){
-        console.log('this.state.page.title', this.state.page);
+        console.log('this.state.page.title', this.state.page.title);
         return (
                  (this.state.page.title !== undefined && this.state.page.title !== null) ? (
                  <div className="row">
@@ -27,13 +28,15 @@ class PageTitle extends Component{
                             <i className={'fa fa-fw' + (this.state.loading ? 'fa-spinner fa-pulse fa-pulse-fast' : 'fa-info-circle')}
                                ></i>
                             <span className="header-title">{this.state.page.title}</span>
-                            (this.state.page.refreshFunction !== null) &&
+                            {(this.state.page.refreshFunction !== null) &&
                             <i className={'float-right cursor fa fa-refresh' + (this.state.page.loading ?  'fa-spin fa-spin-fast' : '')}
                                 onClick={this.state.page.refreshFunction}></i>
+                            }
                         </div>
                         <hr className="barely-visible-border mt-1 mb-2" />
-                        (this.state.page.description !== null) &&
+                        {(this.state.page.description !== null) &&
                         <span className="description-title">{this.state.page.description}</span>
+                        }
                     </div>
                 </div>
                 ) : ""

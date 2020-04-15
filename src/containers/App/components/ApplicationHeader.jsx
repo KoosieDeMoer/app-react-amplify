@@ -16,19 +16,23 @@ class Header extends Component{
         };
         
         this.titlePageRef = new React.createRef();
-        // TODO put in a normal ReactJS location
-        window.titlePage = this.titlePageRef.current;;
-        
-        
+         
         this.logout = this.logout.bind(this);
 
     }
     
+    componentDidMount() {
+        // TODO put in a normal ReactJS location
+        window.titlePage = this.titlePageRef.current;;
+
+    }
+
     logout() {
         // temp stub
         window.cache.storage.set('access', null);
         window.cache.storage.set('account', null);
 
+        // TODO proper route mechanism
         window.location.href = "/";
         
     }
@@ -62,10 +66,10 @@ class Header extends Component{
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>
-              <div className="container-fluid bg-secondary pb-2">
+              <div className="container-fluid bg-secondary pb-2" style={{position : "absolute", marginTop: "80px"}}>
               <div className="row">
                   <div className="col-12">
-                      <PageTitle ref={this.titlePageRef} class="mt-5 pt-5" />
+                      <PageTitle ref={this.titlePageRef} className="mt-5 pt-5" />
                   </div>
               </div>
               </div>

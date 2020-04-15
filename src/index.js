@@ -17,10 +17,10 @@ import 'jquery/dist/jquery.js';
 import '@popperjs/core/dist/umd/popper.js';
 import 'bootstrap/dist/js/bootstrap.js';
 
-import App from './containers/App/App';
-import * as serviceWorker from './serviceWorker';
-import WebApi from './components/Global/WebApi'
-import store from './Store'
+import App from 'containers/App/App';
+import * as serviceWorker from 'serviceWorker';
+import WebApi from 'components/Global/WebApi'
+import store from 'Store'
 
 
 store.WebApi = new WebApi();

@@ -6,11 +6,15 @@ class Placeholder extends BasePage {
     
     constructor(props) {
         super(props);
-        this.title = "Placeholder";
-        super.propogateState();
+        super.title = 'Placeholder - Last Refresh: ' + window.LocalDate('now').format('nice');
+ //       super.description = "Description";
+        super.refreshFunction = this.refreshFunction.bind(this);;
+        
     }
     
-    
+    refreshFunction() {
+        
+    }
     
     render() {
         return (

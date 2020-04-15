@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { Switch, Route, Redirect } from "react-router-dom";
+
+import SpaceTime from 'spacetime'
 
 import ApplicationHeader from './components/ApplicationHeader';
 import ApplicationFooter from './components/ApplicationFooter';
 import ApplicationNavigation from './components/ApplicationNavigation';
 import LoginModal from 'components/Modal/LoginModal';
 import InactivityModal from 'components/Modal/InactivityModal';
-import { authenticated } from 'routes/app'
+import { authenticated, appRoutes } from 'routes/app'
 
 /*eslint no-unused-vars: ["error", { "varsIgnorePattern": "styles" }]*/
 /* styles is used silently */
@@ -24,6 +27,14 @@ class App extends Component {
         this.state = {
             _notificationSystem: null
         };
+        
+        window.LocalDate = function(args) {
+            return SpaceTime(args, 'UTC').goto(SpaceTime('now').timezone().name)
+        }
+
+        window.APIDate = function(args) {
+            return SpaceTime(args, 'UTC')
+        }
     }
 
     
@@ -54,7 +65,20 @@ class App extends Component {
                     <ApplicationHeader  {...this.props} />
                     <LoginModal ref={this.loginModal}/>
                     <InactivityModal ref={this.inactivityModal} />
-                    <div className="container-fluid">
+                   <div className="container-fluid">
+                    <Switch>
+                    {
+                       appRoutes.map(( prop, key ) => {
+                           if ( prop.redirect )
+                               return (
+                                   <Redirect from={prop.path} to={prop.to} key={key} />
+                               );
+                           return (
+                               <Route path={prop.path} component={prop.component} key={key} />
+                           );
+                        } )
+                    }
+                    </Switch>
                         <slot></slot>
                         <ApplicationFooter  {...this.props} />
                     </div>

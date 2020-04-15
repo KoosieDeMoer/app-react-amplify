@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
 import { Container , Row, Col } from 'react-bootstrap';
+import BasePage from './BasePage';
 
 
-class Home extends Component {
+class Dashboard extends BasePage {
+    
+    constructor(props) {
+        super(props);
+        super.title = 'Dashboard - Last Refresh: ' + window.LocalDate('now').format('nice');
+        super.refreshFunction = this.refreshFunction.bind(this);;
+        
+    }
+    
+    refreshFunction() {
+        
+    }
+
     render() {
         return (
             <div className="content">
@@ -18,4 +31,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default Dashboard;

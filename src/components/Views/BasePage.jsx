@@ -6,12 +6,21 @@ class BasePage extends Component{
         super(props);
 
         this.propogateState = this.propogateState.bind(this);
-
+        this.page = null;
     }
     
     propogateState() {
-        window.titlePage.setState({page: this});
+        if(window.titlePage !== undefined) {
+            window.titlePage.setState({page: this});
+        }
     }
+
+    
+    componentDidMount() {
+        this.propogateState();
+
+    }
+
     
 }
 
