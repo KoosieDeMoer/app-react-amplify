@@ -82,111 +82,111 @@ class ApplicationNavigation extends Component {
                 icon: 'fa fa-line-chart',
                 route: 'Dashboard',
             },
-            {
-                type: 'label',
-                title: 'Workflow',
-            },
-            {
-                type: 'group',
-                title: 'Claims',
-                icon: 'fa fa-briefcase',
-                condition: () => {
-                    return this.state.user.hasAbilityTo('claim:create') ||
-                        this.state.user.hasAbilityTo('claim:view:own') ||
-                        this.state.user.hasAbilityTo('claim:view:division')
-                },
-                children: [
-                    {
-                        title: 'View',
-                        route: 'ClaimView',
-                        condition: () => {
-                            // TODO to React return this.$route.name === 'ClaimView'
-                            return true
-                        }
-                    },
-                    {
-                        title: 'Request',
-                        route: 'ClaimProvisionInfo',
-                        condition: () => {
-                            return this.state.user.hasAbilityTo('claim:create')
-                        }
-                    },
-                    {
-                        title: 'List',
-                        route: 'ClaimsList',
-                        condition: () => {
-                            return this.state.user.hasAbilityTo('claim:view:divisions') || this.state.user.hasAbilityTo('claim:view:own')
-                        }
-                    }]
-            },
-            {
-                type: 'link',
-                title: 'Purchase Notes',
-                icon: 'fa fa-ticket',
-                route: 'SupplierPurchaseNotes',
-                condition: function () {
-                    return this.state.user.company.type === 'SUPPLIER' || this.state.user.hasAbilityTo('*')
-                }.bind(this),
-            },
-            {
-                type: 'link',
-                title: 'Dispatch Fees',
-                icon: 'fa fa-truck',
-                route: 'SupplierDispatchQuotes',
-                condition: function () {
-                    return this.state.user.hasAbilityTo('supplier:dispatch:fees')
-                }.bind(this),
-            },
-            {
-                type: 'link',
-                title: 'Inventory Quotes',
-                icon: 'fa fa-envelope',
-                route: 'SupplierInventoryQuotes',
-                condition: function () {
-                    return this.state.user.hasAbilityTo('supplier:inventory:quotes')
-                }.bind(this),
-            },
-            {
-                type: 'label',
-                title: 'Support',
-            },
-            {
-                type: 'link',
-                icon: 'fa fa-book',
-                title: 'Knowledge Base',
-                route: 'SupportKnowledgeBase',
-            },
-            {
-                type: 'label',
-                title: 'Internal',
-                condition: function () {
-                    return this.state.user.globalAdmin !== undefined && this.state.user.globalAdmin
-                }.bind(this),
-            },
-            {
-                type: 'group',
-                title: 'Websocket',
-                icon: 'fa fa-globe',
-                condition: function () {
-                    return this.state.user.hasAbilityTo('*')
-                }.bind(this),
-                children: [
-                    {
-                        title: 'Connections',
-                        route: 'WebsocketConnections',
-                    }]
-            },
-            {
-                type: 'link',
-                title: 'Switch Role',
-                icon: 'fa fa-shield',
-                condition: function () {
-                    return this.state.user.globalAdmin !== undefined && this.state.user.globalAdmin
-                }.bind(this),
-                action: () => {
-                    //this.showRoleSwitchModal()
-                }
-            }
+//            {
+//                type: 'label',
+//                title: 'Workflow',
+//            },
+//            {
+//                type: 'group',
+//                title: 'Claims',
+//                icon: 'fa fa-briefcase',
+//                condition: () => {
+//                    return this.state.user.hasAbilityTo('claim:create') ||
+//                        this.state.user.hasAbilityTo('claim:view:own') ||
+//                        this.state.user.hasAbilityTo('claim:view:division')
+//                },
+//                children: [
+//                    {
+//                        title: 'View',
+//                        route: 'ClaimView',
+//                        condition: () => {
+//                            // TODO to React return this.$route.name === 'ClaimView'
+//                            return true
+//                        }
+//                    },
+//                    {
+//                        title: 'Request',
+//                        route: 'ClaimProvisionInfo',
+//                        condition: () => {
+//                            return this.state.user.hasAbilityTo('claim:create')
+//                        }
+//                    },
+//                    {
+//                        title: 'List',
+//                        route: 'ClaimsList',
+//                        condition: () => {
+//                            return this.state.user.hasAbilityTo('claim:view:divisions') || this.state.user.hasAbilityTo('claim:view:own')
+//                        }
+//                    }]
+//            },
+//            {
+//                type: 'link',
+//                title: 'Purchase Notes',
+//                icon: 'fa fa-ticket',
+//                route: 'SupplierPurchaseNotes',
+//                condition: function () {
+//                    return this.state.user.company.type === 'SUPPLIER' || this.state.user.hasAbilityTo('*')
+//                }.bind(this),
+//            },
+//            {
+//                type: 'link',
+//                title: 'Dispatch Fees',
+//                icon: 'fa fa-truck',
+//                route: 'SupplierDispatchQuotes',
+//                condition: function () {
+//                    return this.state.user.hasAbilityTo('supplier:dispatch:fees')
+//                }.bind(this),
+//            },
+//            {
+//                type: 'link',
+//                title: 'Inventory Quotes',
+//                icon: 'fa fa-envelope',
+//                route: 'SupplierInventoryQuotes',
+//                condition: function () {
+//                    return this.state.user.hasAbilityTo('supplier:inventory:quotes')
+//                }.bind(this),
+//            },
+//            {
+//                type: 'label',
+//                title: 'Support',
+//            },
+//            {
+//                type: 'link',
+//                icon: 'fa fa-book',
+//                title: 'Knowledge Base',
+//                route: 'SupportKnowledgeBase',
+//            },
+//            {
+//                type: 'label',
+//                title: 'Internal',
+//                condition: function () {
+//                    return this.state.user.globalAdmin !== undefined && this.state.user.globalAdmin
+//                }.bind(this),
+//            },
+//            {
+//                type: 'group',
+//                title: 'Websocket',
+//                icon: 'fa fa-globe',
+//                condition: function () {
+//                    return this.state.user.hasAbilityTo('*')
+//                }.bind(this),
+//                children: [
+//                    {
+//                        title: 'Connections',
+//                        route: 'WebsocketConnections',
+//                    }]
+//            },
+//            {
+//                type: 'link',
+//                title: 'Switch Role',
+//                icon: 'fa fa-shield',
+//                condition: function () {
+//                    return this.state.user.globalAdmin !== undefined && this.state.user.globalAdmin
+//                }.bind(this),
+//                action: () => {
+//                    //this.showRoleSwitchModal()
+//                }
+//            }
         ]
     }
 
