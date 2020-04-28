@@ -15,7 +15,6 @@ import styles from './ApplicationNavigation.css';
 class ApplicationNavigation extends Component {
     constructor(props) {
         super(props);
-        console.log('ApplicationNavigation constructor()  window.cache.auth.account', window.cache.auth.account);
         
         this.state = {
             scrollbarFadeEnabled: false,
@@ -30,8 +29,8 @@ class ApplicationNavigation extends Component {
             items: (window.cache.auth.account !== '') ? this.items() : []
         };
 
-        console.log('ApplicationNavigation constructor() this.state', this.state);
-         //some refs
+
+        //some refs
         this.scrollbarRef = React.createRef();
 
         

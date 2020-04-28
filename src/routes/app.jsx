@@ -2,7 +2,6 @@ import appRoutes from 'routes/appRoutes';
 
 function authenticated() {
     let access = window.cache.storage.get('access');
-    console.log('authenticated() access', access);
     return (access.id !== undefined);
 }
 

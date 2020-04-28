@@ -15,6 +15,7 @@ import { authenticated, appRoutes } from 'routes/app'
 import styles from './App.css';
 
 
+
 class App extends Component {
     constructor( props ) {
         super( props );
@@ -35,11 +36,14 @@ class App extends Component {
         window.APIDate = function(args) {
             return SpaceTime(args, 'UTC')
         }
+        
+
     }
 
     
     
     componentDidMount() {
+//        window.toaster = new Toaster();
         if(!authenticated()) {
             this.loginModal.current.handleShow();
         }
@@ -60,25 +64,27 @@ class App extends Component {
         return (
 
                 <>
+                <ApplicationHeader  {...this.props} />
                 <ApplicationNavigation {...this.props} />
                 <div className="content">
-                    <ApplicationHeader  {...this.props} />
+
                     <LoginModal ref={this.loginModal}/>
                     <InactivityModal ref={this.inactivityModal} />
-                   <div className="container-fluid">
-                    <Switch>
-                    {
-                       appRoutes.map(( prop, key ) => {
-                           if ( prop.redirect )
-                               return (
-                                   <Redirect from={prop.path} to={prop.to} key={key} />
-                               );
-                           return (
-                               <Route path={prop.path} component={prop.component} key={key} />
-                           );
-                        } )
-                    }
-                    </Switch>
+                    <div className="space-for-header"></div>	
+                    <div className="container-fluid" >
+                        <Switch>
+                        {
+                            appRoutes.map(( prop, key ) => {
+                                if ( prop.redirect )
+                                    return (
+                                            <Redirect from={prop.path} to={prop.to} key={key} />
+                                    );
+                                return (
+                                        <Route path={prop.path} component={prop.component} key={key} />
+                                );
+                            } )
+                        }
+                        </Switch>
                         <slot></slot>
                         <ApplicationFooter  {...this.props} />
                     </div>

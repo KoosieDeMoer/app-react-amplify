@@ -19,6 +19,7 @@
     "react-notification-system": "^0.3.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "react-toastify": "^5.5.0",
     "secure-ls": "^1.2.6",
     "spacetime": "^6.4.3"
   },

@@ -16046,7 +16046,7 @@ textarea[resize="horizontal"] {
 }
 
 .input-group .form-control:not(:last-child) {
-  border-right: 0;
+/*  border-right: 0; */ /* had to edit base.css - applying Form.Control.Feedback makes Form.Control not(:last-child) */
   padding-right: 0;
 }
 
@@ -16250,7 +16250,7 @@ textarea[resize="horizontal"] {
 }
 
 .input-group .form-control:not(:last-child) {
-  border-right: 0;
+  /* border-right: 0; */ /* had to edit base.css - applying Form.Control.Feedback makes Form.Control not(:last-child) */
   padding-right: 0;
 }
 
