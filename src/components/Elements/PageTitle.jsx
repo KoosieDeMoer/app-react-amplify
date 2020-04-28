@@ -15,12 +15,10 @@ class PageTitle extends Component{
     
     changePage(page) {
         this.setState({page: page});
-        console.log('changePage this.state.page', this.state.page);
     }
     
     render(){
-        console.log('this.state.page.title', this.state.page.title);
-        return (
+         return (
                  (this.state.page.title !== undefined && this.state.page.title !== null) ? (
                  <div className="row">
                     <div className="col-12 pb-3">

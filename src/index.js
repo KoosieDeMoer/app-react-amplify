@@ -19,8 +19,9 @@ import 'bootstrap/dist/js/bootstrap.js';
 
 import App from 'containers/App/App';
 import * as serviceWorker from 'serviceWorker';
-import WebApi from 'components/Global/WebApi'
 import store from 'Store'
+import WebApi from 'components/Global/WebApi'
+import Toaster from 'components/Global/Toaster';
 
 
 store.WebApi = new WebApi();
@@ -34,7 +35,8 @@ ReactDOM.render(
               <Route path="/" name="Home" component={App}/>
           </Switch>
       </HashRouter>
-  </React.StrictMode>,
+      <Toaster />
+   </React.StrictMode>,
   document.getElementById('root')
 );
 

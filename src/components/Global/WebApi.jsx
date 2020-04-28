@@ -43,8 +43,6 @@ class WebApi extends Component {
             'X-Requested-With': 'XMLHttpRequest',
         }
 
-        console.log('buildHeaders window.cache.auth.access', window.cache.auth.access);
-        
         if (window.cache.auth.access && window.cache.auth.access.token) {
             headers.Authorization = `Bearer ${window.cache.auth.access.token}`
         }

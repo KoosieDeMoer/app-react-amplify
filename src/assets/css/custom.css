@@ -2,8 +2,13 @@ body {
     overflow-x: hidden;
 }
 
+
 .header {
     min-height: 245px;
+}
+
+.space-for-header {
+   	height: 15vh;
 }
 
 .cursor-pointer, .cursor {
@@ -88,6 +93,13 @@ input.form-control:active {
 
 input.form-control:active+.input-group-prepend {
     color: red !important;
+}
+
+
+.input-group .form-control:not(:last-child)  {
+	border-right-width: 6px !important;
+    border-top-right-radius: 0.375rem; 
+    border-bottom-right-radius: 0.375rem; 
 }
 
 .toasted.bubble {
@@ -214,9 +226,6 @@ input.form-control:active+.input-group-prepend {
 }
 
 @media (max-width: 767.98px) {
-    body .content:first-of-type {
-        padding-top: 20px;
-    }
 
     .sidebar {
         background: none;
