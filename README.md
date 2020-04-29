@@ -7,6 +7,10 @@ Copy .env.example to .env
 
 In the project directory, you can run:
 
+### `yarn install`
+
+Installs all the dependencies locally.<br />
+
 ### `yarn start`
 
 Runs the app in the development mode.<br />
