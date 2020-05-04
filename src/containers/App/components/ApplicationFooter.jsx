@@ -11,7 +11,7 @@ class Footer extends Component {
                         <FormattedMessage
                             id="copyright"
                         />
-                                &nbsp;&copy; { new Date().getFullYear() } <a href="https://www.slvrcld.com" className="font-weight-bold ml-1" target="_blank" rel="noopener noreferrer">SLVRCLD BV</a><br/>
+                                &nbsp;{ new Date().getFullYear() } <a href="https://www.slvrcld.com" className="font-weight-bold ml-1" target="_blank" rel="noopener noreferrer">SLVRCLD BV</a><br/>
 		                </div>
 		            </div>
 		            <div className="col-xl-6">
