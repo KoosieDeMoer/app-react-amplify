@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import {FormattedMessage} from 'react-intl'
 
 /*eslint no-unused-vars: ["error", { "varsIgnorePattern": "styles" }]*/
 import styles from './Modal.css';
@@ -43,16 +44,32 @@ class BaseModal extends React.Component {
 			<div>
 				<Modal show={this.state.show} onHide={this.handleClose} backdrop="static">
 					<Modal.Header>
-						<Modal.Title>{this.props.title}</Modal.Title>
+						<Modal.Title>
+						    <FormattedMessage
+						        id={this.props.titleTextId}
+						    />
+		                </Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
-						<h5>{this.props.subtitle}</h5>
+						<h5>
+						    <FormattedMessage
+						        id={this.props.subtitleTextId}
+						    />
+						</h5>
 						{this.props.children}
 						<hr />
 					</Modal.Body>
 					<Modal.Footer>
-						<Button onClick={this.handleExit} >{this.props.dismissButtonText}</Button>
-						<Button onClick={this.props.handleConfirm} bsstyle="info">{this.props.confirmButtonText}</Button>
+						<Button onClick={this.handleExit} >
+						    <FormattedMessage
+						        id={this.props.dismissButtonTextId}
+						    />
+						</Button>
+						<Button onClick={this.props.handleConfirm} bsstyle="info">
+                            <FormattedMessage
+                                id={this.props.confirmButtonTextId}
+                            />
+                        </Button>
 					</Modal.Footer>
 				</Modal>
 			</div>

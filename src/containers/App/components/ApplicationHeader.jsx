@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import {FormattedMessage} from 'react-intl'
 
 /*eslint no-unused-vars: ["error", { "varsIgnorePattern": "styles" }]*/
 /* styles is used silently */
@@ -61,7 +62,11 @@ class Header extends Component{
                     }
                       <NavDropdown.Item href="#action/3.2">Bootstrap</NavDropdown.Item>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item onClick={ this.logout }>Logout</NavDropdown.Item>
+                      <NavDropdown.Item onClick={ this.logout }>
+                          <FormattedMessage
+                              id="logout"
+                          />
+                      </NavDropdown.Item>
                     </NavDropdown>
                   </Nav>
                 </Navbar.Collapse>

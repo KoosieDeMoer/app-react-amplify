@@ -1,0 +1,59 @@
+{
+  "en": {
+    "email": "Email",
+    "emailInvalid": "Please enter an email address.",
+    "passwordRequired": "Please enter password.",
+    "loginTitle": "Login",
+    "loginSubtitle": "Please login to continue",
+    "logout": "Logout",
+    "copyright": "Copyright",
+    "overview": "Overview",
+    "dashboard": "Dashboard",
+    "exit": "Exit",
+    "time": "The time is {t, time, short}.",
+    "date": "The date is {d, date}."
+  },
+  "es": {
+    "email": "Correo electrónico",
+    "emailInvalid": "Ingrese una dirección de correo electrónico",
+    "passwordRequired": "Ingrese la contraseña",
+    "loginTitle": "Iniciar sesión",
+    "loginSubtitle": "Inicie sesión para continuar",
+    "logout": "Cerrar sesión",
+    "copyright": "Copyright",
+    "overview": "Resumen",
+    "dashboard": "Tablero",
+    "exit": "Salir",
+    "time": "La hora es {t, time, short}.",
+    "date": "La fecha es {d, date}."
+  },
+  "fr": {
+    "email": "Email",
+    "emailInvalid": "Veuillez saisir une adresse e-mail.",
+    "passwordRequired": "Veuillez saisir le mot de passe.",
+    "loginTitle": "Login",
+    "loginSubtitle": "Veuillez vous connecter pour continuer",
+    "logout": "Déconnexion",
+    "copyright": "Copyright",
+    "overview": "Aperçu",
+    "dashboard": "Tableau de bord",
+    "exit": "Exit",
+    "time": "Il est {t, time, short}.",
+    "date": "La date est {d, date}."
+  },
+  "de": {
+    "email": "Email",
+    "emailInvalid": "Bitte geben Sie eine E-Mail-Adresse ein.",
+    "passwordRequired": "Bitte Passwort eingeben.",
+    "loginTitle": "Anmelden",
+    "loginSubtitle": "Bitte anmelden, um fortzufahren",
+    "logout": "Abmelden",
+    "copyright": "Copyright",
+    "overview": "Übersicht",
+    "dashboard": "Dashboard",
+    "exit": "Exit",
+    "time": "Es ist {t, time, short} Uhr.",
+    "date": "Das Datum ist {d, date}."
+  }
+}
+

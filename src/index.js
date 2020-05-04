@@ -6,6 +6,7 @@ import {
     Route,
     Switch
 } from 'react-router-dom';
+import { IntlProvider } from 'react-intl'
 
 
 import "./assets/css/base.css";
@@ -22,20 +23,41 @@ import * as serviceWorker from 'serviceWorker';
 import store from 'Store'
 import WebApi from 'components/Global/WebApi'
 import Toaster from 'components/Global/Toaster';
+import localeData from "assets/lang/localeData.json";
 
 
 store.WebApi = new WebApi();
 // TODO replace window.cache with redux hooks or somesuch 
 window.cache = store;
 
+//Define user's language. Different browsers have the user locale defined
+//on different fields on the `navigator` object, so we make sure to account
+//for these different by checking all of them
+const language =
+(navigator.languages && navigator.languages[0]) ||
+navigator.language ||
+navigator.userLanguage;
+
+//Split locales with a region code
+const languageWithoutRegionCode = language.toLowerCase().split(/[_-]+/)[0];
+
+//Try full locale, try locale without region code, fallback to 'en'
+const messages =
+localeData[languageWithoutRegionCode] ||
+localeData[language] ||
+localeData.en;
+
+
 ReactDOM.render(
   <React.StrictMode>
-      <HashRouter>
-          <Switch>
-              <Route path="/" name="Home" component={App}/>
-          </Switch>
-      </HashRouter>
-      <Toaster />
+      <IntlProvider locale={language} messages={messages}>
+          <HashRouter>
+              <Switch>
+                  <Route path="/" name="Home" component={App}/>
+              </Switch>
+           </HashRouter>
+           <Toaster />
+      </IntlProvider>
    </React.StrictMode>,
   document.getElementById('root')
 );

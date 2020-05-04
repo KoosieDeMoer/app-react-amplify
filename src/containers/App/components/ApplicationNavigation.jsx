@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
     Link
 } from 'react-router-dom'
+import {FormattedMessage} from 'react-intl'
 import {
     isMobile
 } from 'mobile-device-detect'
@@ -73,11 +74,11 @@ class ApplicationNavigation extends Component {
         return [
             {
                 type: 'label',
-                title: 'Overview'
+                titleTextId: 'overview'
             },
             {
                 type: 'link',
-                title: 'Dashboard',
+                titleTextId: 'dashboard',
                 icon: 'fa fa-line-chart',
                 route: 'Dashboard',
             },
@@ -236,7 +237,8 @@ class ApplicationNavigation extends Component {
                                         <ul className="navbar-nav" id={'sidebar-group-' + index} key={'sidebar-group-' + index}>
                                             <li className="nav-item" >
                                                 <div className="nav-link link-button" data-toggle="collapse" data-target={'#sidebar-item-' + index} role="menuitem">
-                                                    <i className={item.icon}></i> {item.title}
+                                                    <i className={item.icon}></i>
+                                                    <FormattedMessage id={item.titleTextId} />
                                                 </div>
                                                 <div className="collapse" id={'sidebar-item-' + index} data-parent={'#sidebar-group-' + index}>
                                                     <ul className="navbar-nav">
@@ -251,11 +253,13 @@ class ApplicationNavigation extends Component {
                                                                                 {
                                                                                     (child.action === undefined) ? (
                                                                                         <Link to={child.route} className="nav-link">
-                                                                                            <i className="fa fa-circle-o"></i> {child.title}
+                                                                                            <i className="fa fa-circle-o"></i>
+                                                                                            <FormattedMessage id={item.titleTextId} />
                                                                                         </Link>
                                                                                     ) : (
                                                                                             <div className="nav-link nav-link-action link-button" onClick={child.action}>
-                                                                                                <i className="fa fa-circle-o"></i> {child.title}
+                                                                                                <i className="fa fa-circle-o"></i>
+                                                                                                <FormattedMessage id={item.titleTextId} />
                                                                                             </div>
                                                                                         )
                                                                                 }
@@ -277,11 +281,13 @@ class ApplicationNavigation extends Component {
                                             <li className="nav-item" >
                                                 {(item.action === undefined) ? (
                                                     <Link to={item.route} className="nav-link">
-                                                        <i className={item.icon}></i> {item.title}
+                                                        <i className={item.icon}></i> 
+                                                        <FormattedMessage id={item.titleTextId} />
                                                     </Link>
                                                 ) : (
                                                         <div className="nav-link nav-link-action link-button" onClick={item.action}>
-                                                            <i className={item.icon}></i> {item.title}
+                                                            <i className={item.icon}></i> 
+                                                            <FormattedMessage id={item.titleTextId} />
                                                         </div>
                                                     )
                                                 }
@@ -298,7 +304,7 @@ class ApplicationNavigation extends Component {
                                             }
                                             {/* Label */}
                                             <h6 className="navbar-heading text-muted">
-                                                {item.title}
+                                                <FormattedMessage id={item.titleTextId} />
                                             </h6>
                                         </div>
                                     )
