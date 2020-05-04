@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, InputGroup } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
 import BaseModal from './BaseModal';
 
@@ -102,7 +102,7 @@ class LoginModal extends React.Component {
 	render() {
 
 		return (
-			<BaseModal ref={this.baseModal} title="Login" subtitle="Please login to continue" dismissButtonText="Exit" confirmButtonText="Login" handleConfirm={this.handleSubmit}>
+			<BaseModal ref={this.baseModal} titleTextId="loginTitle" subtitleTextId="loginSubtitle" dismissButtonTextId="exit" confirmButtonTextId="loginTitle" handleConfirm={this.handleSubmit}>
 				<Form ref={this.formRef} noValidate validated={this.state.validated} onSubmit={this.handleSubmit} >
 					<FormItem 
 					    controlId="email"
@@ -110,24 +110,17 @@ class LoginModal extends React.Component {
 					    autoFocus 
 					    required
 					    iconClass="fa-user-o"
-					    onChange={this.handleEmailChange}
-					    invalidFeedback="Please enter an email." 
+					    invalidFeedbackTextId="emailInvalid" 
+	                    onChange={this.handleEmailChange}
 					/>
-					<Form.Group controlId="password">
-						<InputGroup>
-							<InputGroup.Prepend>
-								<InputGroup.Text><i className="fa fa-key text-dark"></i></InputGroup.Text>
-							</InputGroup.Prepend>
-							<Form.Control
-								type="password"
-								required
-								onChange={this.handlePasswordChange}
-							/>
-							<Form.Control.Feedback type="invalid">
-								Please enter password.
-							</Form.Control.Feedback>
-						</InputGroup>
-					</Form.Group>
+		            <FormItem 
+	                    controlId="password"
+	                    type="password" 
+	                    required
+	                    iconClass="fa-key"
+	                    invalidFeedbackTextId="passwordRequired" 
+	                    onChange={this.handlePasswordChange}
+	                />
 				</Form>
 			</BaseModal>
 		);

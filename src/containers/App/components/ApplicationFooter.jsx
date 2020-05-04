@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {FormattedMessage} from 'react-intl'
 
 class Footer extends Component {
 	render() {
@@ -7,7 +8,10 @@ class Footer extends Component {
 		        <div className="row align-items-center justify-content-xl-between">
 		            <div className="col-xl-6">
 		                <div className="copyright text-center text-xl-left text-muted">
-		                    Copyright &copy; { new Date().getFullYear() } <a href="https://www.slvrcld.com" className="font-weight-bold ml-1" target="_blank" rel="noopener noreferrer">SLVRCLD BV</a><br/>
+                        <FormattedMessage
+                            id="copyright"
+                        />
+                                &nbsp;&copy; { new Date().getFullYear() } <a href="https://www.slvrcld.com" className="font-weight-bold ml-1" target="_blank" rel="noopener noreferrer">SLVRCLD BV</a><br/>
 		                </div>
 		            </div>
 		            <div className="col-xl-6">
