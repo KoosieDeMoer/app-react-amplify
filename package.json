@@ -16,6 +16,7 @@
     "react-app-polyfill": "^1.0.6",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
+    "react-flatpickr": "^3.10.0",
     "react-intl": "^4.5.1",
     "react-notification-system": "^0.3.0",
     "react-router-dom": "^5.1.2",

@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import {FormattedMessage} from 'react-intl'
 
-/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "styles" }]*/
-/* styles is used silently */
-import styles from './ApplicationHeader.css';
+import './ApplicationHeader.css';
 
 import PageTitle from 'components/Elements/PageTitle';
 

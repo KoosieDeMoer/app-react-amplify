@@ -41,11 +41,12 @@ navigator.userLanguage;
 //Split locales with a region code
 const languageWithoutRegionCode = language.toLowerCase().split(/[_-]+/)[0];
 
+const supportedLanguages = Object.keys(localeData);
+
+export const locale = supportedLanguages.includes(languageWithoutRegionCode) ? languageWithoutRegionCode : 'en';
+
 //Try full locale, try locale without region code, fallback to 'en'
-const messages =
-localeData[languageWithoutRegionCode] ||
-localeData[language] ||
-localeData.en;
+const messages = localeData[locale] ;
 
 
 ReactDOM.render(
