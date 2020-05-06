@@ -2,8 +2,8 @@ import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import {FormattedMessage} from 'react-intl'
 
-/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "styles" }]*/
-import styles from './Modal.css';
+
+import './Modal.css';
 
 class BaseModal extends React.Component {
 	constructor(props, context) {

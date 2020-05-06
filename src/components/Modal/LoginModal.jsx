@@ -5,6 +5,8 @@ import BaseModal from './BaseModal';
 
 import FormItem from 'components/Elements/FormItem';
 import {showError} from 'components/Global/Toaster';
+import DateTimePicker from 'components/Elements/DateTimePicker';
+
 
 class LoginModal extends React.Component {
 	constructor(props, context) {
@@ -121,6 +123,14 @@ class LoginModal extends React.Component {
 	                    invalidFeedbackTextId="passwordRequired" 
 	                    onChange={this.handlePasswordChange}
 	                />
+                    <FormItem 
+                        controlId="date"
+                            type="date" 
+                                required
+                                iconClass="fa-calendar"
+                     />
+                                    <DateTimePicker />
+
 				</Form>
 			</BaseModal>
 		);

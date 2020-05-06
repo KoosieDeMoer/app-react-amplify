@@ -9,9 +9,7 @@ import {
 import $ from 'jquery';
 
 
-/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "styles" }]*/
-/* styles is used silently */
-import styles from './ApplicationNavigation.css';
+import './ApplicationNavigation.css';
 
 class ApplicationNavigation extends Component {
     constructor(props) {

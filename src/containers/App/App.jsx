@@ -10,9 +10,7 @@ import LoginModal from 'components/Modal/LoginModal';
 import InactivityModal from 'components/Modal/InactivityModal';
 import { authenticated, appRoutes } from 'routes/app'
 
-/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "styles" }]*/
-/* styles is used silently */
-import styles from './App.css';
+import './App.css';
 
 
 
