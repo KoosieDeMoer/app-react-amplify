@@ -1,8 +1,8 @@
-import appRoutes from 'routes/appRoutes';
+import appRoutes from "routes/appRoutes";
 
 function authenticated() {
-    let access = window.cache.storage.get('access');
-    return (access.id !== undefined);
+  let access = window.cache.storage.get("access");
+  return access.id !== undefined;
 }
 
-export { appRoutes, authenticated};
+export { appRoutes, authenticated };
