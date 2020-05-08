@@ -18,6 +18,10 @@ class DateTimePicker extends Component {
     this.state = {
       date: new Date()
     };
+    
+    this.handleChange = this.handleChange.bind( this );
+    
+    this.handleChange(this.state.date);
   }
  
   handleChange(date) {
@@ -43,8 +47,8 @@ class DateTimePicker extends Component {
       	options={{ locale: locale}}
         data-enable-time
         value={date}
-        onChange={date => {
-          this.handleChange( date );
+        onChange={array => {
+          this.handleChange( array[0] );
         }}
       />
     );
