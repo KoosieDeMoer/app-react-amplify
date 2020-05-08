@@ -20,6 +20,22 @@ class DateTimePicker extends Component {
     };
   }
  
+  handleChange(date) {
+
+      this.setState = ({
+              date: date
+       });
+
+      var event = {
+              target : {
+                  name : this.props.name,
+                  value : date
+              }
+      };
+      
+      this.props.onChange(event);
+  }
+
   render() {
     const { date } = this.state;
     return (
@@ -28,7 +44,7 @@ class DateTimePicker extends Component {
         data-enable-time
         value={date}
         onChange={date => {
-          this.setState({ date });
+          this.handleChange( date );
         }}
       />
     );

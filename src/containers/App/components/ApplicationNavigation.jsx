@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import {
-    Link
-} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 import {FormattedMessage} from 'react-intl'
 import {
     isMobile
@@ -227,7 +226,6 @@ class ApplicationNavigation extends Component {
                     <div options={this.state.scrollbarOptions} scrollheight={this.state.scrollbarOptions.height} ref={this.scrollbarRef}>
                         {
                             this.state.items.map((item, index) => {
-
                                 /* Group */
                                 if (item.type === 'group' && (item.condition === undefined || item.condition() === true)) {
                                     return (
@@ -252,12 +250,12 @@ class ApplicationNavigation extends Component {
                                                                                     (child.action === undefined) ? (
                                                                                         <Link to={child.route} className="nav-link">
                                                                                             <i className="fa fa-circle-o"></i>
-                                                                                            <FormattedMessage id={item.titleTextId} />
+                                                                                            <FormattedMessage id={child.titleTextId} />
                                                                                         </Link>
                                                                                     ) : (
                                                                                             <div className="nav-link nav-link-action link-button" onClick={child.action}>
                                                                                                 <i className="fa fa-circle-o"></i>
-                                                                                                <FormattedMessage id={item.titleTextId} />
+                                                                                                <FormattedMessage id={child.titleTextId} />
                                                                                             </div>
                                                                                         )
                                                                                 }

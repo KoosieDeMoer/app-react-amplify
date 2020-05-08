@@ -6,6 +6,7 @@ import SpaceTime from 'spacetime'
 import ApplicationHeader from './components/ApplicationHeader';
 import ApplicationFooter from './components/ApplicationFooter';
 import ApplicationNavigation from './components/ApplicationNavigation';
+import WaitIndicator from 'components/Global/WaitIndicator';
 import LoginModal from 'components/Modal/LoginModal';
 import InactivityModal from 'components/Modal/InactivityModal';
 import { authenticated, appRoutes } from 'routes/app'
@@ -41,7 +42,6 @@ class App extends Component {
     
     
     componentDidMount() {
-//        window.toaster = new Toaster();
         if(!authenticated()) {
             this.loginModal.current.handleShow();
         }
@@ -62,6 +62,7 @@ class App extends Component {
         return (
 
                 <>
+                <WaitIndicator/>
                 <ApplicationHeader  {...this.props} />
                 <ApplicationNavigation {...this.props} />
                 <div className="content">

@@ -7,6 +7,10 @@ body {
     min-height: 245px;
 }
 
+.header-title {
+	padding-left: 25vh;
+}
+
 .space-for-header {
    	height: 15vh;
 }
@@ -263,6 +267,11 @@ input.form-control:active+.input-group-prepend {
     .sidebar .navbar-collapse .navbar-toggler span {
         background: #ffffff;
     }
+    
+    .header-title {
+	padding-left: 0 !important;
+	}
+    
 }
 
 .collapsing {

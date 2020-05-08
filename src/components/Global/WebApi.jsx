@@ -60,14 +60,23 @@ class WebApi extends Component {
     */
     request(method, url, q, data, uploadProgressHandler) {
         url += this.buildQueryParams(q)
+        window.showWait(true);
+        return new Promise((resolve, reject) => {
+                this.client({
+                    method,
+                    url,
+                    data,
+                    headers: this.buildHeaders(),
+                    uploadProgressHandler: uploadProgressHandler
+                }).then((response) => {
+                    window.showWait(false);
+                    return resolve(response)
+                }).catch((error) => {
+                   window.showWait(false);
+                   return reject(error)
+                })
+            })
 
-        return this.client({
-            method,
-            url,
-            data,
-            headers: this.buildHeaders(),
-            uploadProgressHandler: uploadProgressHandler
-        })
     }
     
     
