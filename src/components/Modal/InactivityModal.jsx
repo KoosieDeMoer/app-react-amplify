@@ -1,56 +1,59 @@
-import React from "react";
+import React from 'react';
 
-import BaseModal from "./BaseModal";
+import BaseModal from './BaseModal';
 
-import { showError } from "components/Global/Toaster";
+import {showError} from 'components/Global/Toaster';
 
 class InactivityModal extends React.Component {
-  constructor(props, context) {
-    super(props, context);
+	  constructor(props, context) {
+	    super(props, context);
+    
+        this.baseModal = React.createRef();
 
-    this.baseModal = React.createRef();
+        this.handleLogout = this.handleLogout.bind(this);
+	    this.handleConfirm = this.handleConfirm.bind(this);
 
-    this.handleLogout = this.handleLogout.bind(this);
-    this.handleConfirm = this.handleConfirm.bind(this);
-  }
+	  }
+	  
+	  handleShow(event) {
+	      this.baseModal.current.handleShow(event);
+	  }
 
-  handleShow(event) {
-    this.baseModal.current.handleShow(event);
-  }
+	  handleConfirm() {
+		  // do nothing
+	  }
 
-  handleConfirm() {
-    // do nothing
-  }
+	  handleLogout() {
+	      
+	      // TODO migrate to TokenLifeManager
 
-  handleLogout() {
-    // TODO migrate to TokenLifeManager
+	      window.cache.WebApi.tokens(window.cache.auth.access.id).destroy()
+          .then((response) => {
+              window.cache.auth.access = null;
+              window.cache.storage.set('access', null);
+          }).catch((error) => {
+              showError(error.message);
+          })
+	      
+	  }
+  
+	  render() {
 
-    window.cache.WebApi.tokens(window.cache.auth.access.id)
-      .destroy()
-      .then((response) => {
-        window.cache.auth.access = null;
-        window.cache.storage.set("access", null);
-      })
-      .catch((error) => {
-        showError(error.message);
-      });
-  }
+	    return (
+          <BaseModal 
+              ref={this.baseModal} 
+              titleTextId="inactivityTitle" 
+              subtitleTextId="inactivitySubtitle"
+              closeButton    
+              dismissButtonTextId="exit"
+              confirmButtonTextId="remainLoggedIn"
+              handleClose={this.handleConfirm}
+              handleDismiss={this.handleLogout}
+              handleConfirm={this.handleConfirm}/>
 
-  render() {
-    return (
-      <BaseModal
-        ref={this.baseModal}
-        titleTextId="inactivityTitle"
-        subtitleTextId="inactivitySubtitle"
-        closeButton
-        dismissButtonTextId="exit"
-        confirmButtonTextId="remainLoggedIn"
-        handleClose={this.handleConfirm}
-        handleDismiss={this.handleLogout}
-        handleConfirm={this.handleConfirm}
-      />
-    );
-  }
-}
+	    );
+	  }
+	}
 
 export default InactivityModal;
+	
