@@ -2,11 +2,9 @@ import React from 'react';
 import { Form } from 'react-bootstrap';
 
 import BaseModal from './BaseModal';
+import {showError} from 'components/Global/Toaster';
 
 import FormItem from 'components/Elements/FormItem';
-import {showError} from 'components/Global/Toaster';
-import DateTimePicker from 'components/Elements/DateTimePicker';
-
 
 class LoginModal extends React.Component {
 	constructor(props, context) {
@@ -34,6 +32,7 @@ class LoginModal extends React.Component {
     handleShow(event) {
 		this.baseModal.current.handleShow(event);
 	}
+    
 	handleEmailChange(event) {
 		this.setState({ email: event.target.value });
 	}
@@ -105,7 +104,7 @@ class LoginModal extends React.Component {
 
 		return (
 			<BaseModal ref={this.baseModal} titleTextId="loginTitle" subtitleTextId="loginSubtitle" dismissButtonTextId="exit" confirmButtonTextId="loginTitle" handleConfirm={this.handleSubmit}>
-				<Form ref={this.formRef} noValidate validated={this.state.validated} onSubmit={this.handleSubmit} >
+ 				<Form ref={this.formRef} noValidate validated={this.state.validated} onSubmit={this.handleSubmit} >
 					<FormItem 
 					    controlId="email"
 					    type="email" 
@@ -123,14 +122,6 @@ class LoginModal extends React.Component {
 	                    invalidFeedbackTextId="passwordRequired" 
 	                    onChange={this.handlePasswordChange}
 	                />
-                    <FormItem 
-                        controlId="date"
-                            type="date" 
-                                required
-                                iconClass="fa-calendar"
-                     />
-                                    <DateTimePicker />
-
 				</Form>
 			</BaseModal>
 		);

@@ -11,7 +11,7 @@ class BaseModal extends React.Component {
 
 		this.handleShow = this.handleShow.bind(this);
 		this.handleClose = this.handleClose.bind(this);
-		this.handleExit = this.handleExit.bind(this);
+		this.handleDismiss = this.handleDismiss.bind(this);
         this.showError = this.showError.bind(this);
 
 		this.state = {
@@ -20,6 +20,9 @@ class BaseModal extends React.Component {
 	}
 
 	handleClose() {
+	    if(this.props.handleClose !== undefined) {
+	        this.props.handleClose();
+	    }
 		this.setState({ show: false });
 	}
 
@@ -27,8 +30,11 @@ class BaseModal extends React.Component {
 		this.setState({ show: true });
 	}
 
-	handleExit() {
-		this.handleClose();
+	handleDismiss() {
+        if(this.props.handleDismiss !== undefined) {
+            this.props.handleDismiss();
+        }
+        this.setState({ show: false });
 	}
 
 	showError(errorText) {
@@ -43,33 +49,41 @@ class BaseModal extends React.Component {
 		return (
 			<div>
 				<Modal show={this.state.show} onHide={this.handleClose} backdrop="static">
-					<Modal.Header>
+				{ this.props.titleTextId &&
+					<Modal.Header closeButton={this.props.closeButton}>
 						<Modal.Title>
 						    <FormattedMessage
 						        id={this.props.titleTextId}
 						    />
 		                </Modal.Title>
 					</Modal.Header>
+				}
 					<Modal.Body>
+					    { this.props.subtitleTextId &&
 						<h5>
 						    <FormattedMessage
 						        id={this.props.subtitleTextId}
 						    />
 						</h5>
-						{this.props.children}
+					    }
+					    {this.props.children}
 						<hr />
 					</Modal.Body>
 					<Modal.Footer>
-						<Button onClick={this.handleExit} >
+                        { this.props.dismissButtonTextId &&
+						<Button onClick={this.handleDismiss} >
 						    <FormattedMessage
 						        id={this.props.dismissButtonTextId}
 						    />
 						</Button>
+                        }
+						{ this.props.confirmButtonTextId &&
 						<Button onClick={this.props.handleConfirm} bsstyle="info">
                             <FormattedMessage
                                 id={this.props.confirmButtonTextId}
                             />
                         </Button>
+						}
 					</Modal.Footer>
 				</Modal>
 			</div>

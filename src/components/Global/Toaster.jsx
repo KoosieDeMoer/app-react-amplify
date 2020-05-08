@@ -4,6 +4,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 export function showError(text) {
+    window.showWait(false);
+
     toast.error(text, {
         position: "top-right",
         autoClose: 5000,

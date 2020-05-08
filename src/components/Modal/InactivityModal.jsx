@@ -1,69 +1,56 @@
 import React from 'react';
-import { Modal, Button } from 'react-bootstrap';
+
+import BaseModal from './BaseModal';
+
+import {showError} from 'components/Global/Toaster';
 
 class InactivityModal extends React.Component {
 	  constructor(props, context) {
 	    super(props, context);
-
     
-	    this.handleShow = this.handleShow.bind(this);
-	    this.handleClose = this.handleClose.bind(this);
-	    this.handleSubmit = this.handleSubmit.bind(this);
-	    this.handleExit = this.handleExit.bind(this);
+        this.baseModal = React.createRef();
 
-	    this.state = {
-	      show: false,
-	      username: "",
-	      password: ""
-	    };
+        this.handleLogout = this.handleLogout.bind(this);
+	    this.handleConfirm = this.handleConfirm.bind(this);
+
 	  }
-
-
 	  
-	  handleSubmit() {
-		  this.refs.errorZone.innerHTML = "&nbsp;";
-		  // TODO reset inactivity timer
-		  
+	  handleShow(event) {
+	      this.baseModal.current.handleShow(event);
 	  }
 
+	  handleConfirm() {
+		  // do nothing
+	  }
+
+	  handleLogout() {
+	      
+	      // TODO migrate to TokenLifeManager
+
+	      window.cache.WebApi.tokens(window.cache.auth.access.id).destroy()
+          .then((response) => {
+              window.cache.auth.access = null;
+              window.cache.storage.set('access', null);
+          }).catch((error) => {
+              showError(error.message);
+          })
+	      
+	  }
   
-	  handleClose() {
-	      this.setState({ show: false });
-		  // TODO logoff to be safe
-
-	  }
-
-	  handleShow() {
-	    this.setState({ show: true });
-	  }
-
-	  handleExit() {
-		  this.handleClose();
-	  }
-
 	  render() {
 
 	    return (
-	      <div>
+          <BaseModal 
+              ref={this.baseModal} 
+              titleTextId="inactivityTitle" 
+              subtitleTextId="inactivitySubtitle"
+              closeButton    
+              dismissButtonTextId="exit"
+              confirmButtonTextId="remainLoggedIn"
+              handleClose={this.handleConfirm}
+              handleDismiss={this.handleLogout}
+              handleConfirm={this.handleConfirm}/>
 
-	        <Modal show={this.state.show} onHide={this.handleClose}>
-	          <Modal.Header closeButton>
-	            <Modal.Title>User inactivity detected</Modal.Title>
-	          </Modal.Header>
-	          <Modal.Body>
-	            <h4>You have been inactive for some time</h4>
-
-	            <div ref="errorZone">&nbsp;</div>
-
-	            <hr />
-
-	          </Modal.Body>
-	          <Modal.Footer>
-	            <Button onClick={this.handleExit}>Exit</Button>
-	            <Button onClick={this.handleSubmit} bsStyle="info">Remain logged in</Button>
-	          </Modal.Footer>
-	        </Modal>
-	      </div>
 	    );
 	  }
 	}

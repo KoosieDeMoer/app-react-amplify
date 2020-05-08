@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
+
 import {FormattedMessage} from 'react-intl'
 
 import './ApplicationHeader.css';
 
 import PageTitle from 'components/Elements/PageTitle';
+import {showError} from 'components/Global/Toaster';
 
 class Header extends Component{
     constructor(props){
@@ -16,7 +19,7 @@ class Header extends Component{
         
         this.titlePageRef = new React.createRef();
          
-        this.logout = this.logout.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
 
     }
     
@@ -26,16 +29,22 @@ class Header extends Component{
 
     }
 
-    logout() {
-        // temp stub
-        window.cache.storage.set('access', null);
-        window.cache.storage.set('account', null);
-
-        // TODO proper route mechanism
-        window.location.href = "/";
+    handleLogout() {
         
-    }
+        // TODO migrate to TokenLifeManager
 
+        window.cache.WebApi.tokens(window.cache.auth.access.id).destroy()
+        .then((response) => {
+            window.cache.auth.access = null;
+            window.cache.storage.set('access', null);
+            // TODO proper route mechanism - or maybe not
+            window.location.href = "/";
+        }).catch((error) => {
+            showError(error.message);
+        })
+
+
+    }
    
     
     render(){
@@ -58,9 +67,14 @@ class Header extends Component{
                         <NavDropdown.Divider />
                         </>
                     }
-                      <NavDropdown.Item href="#action/3.2">Bootstrap</NavDropdown.Item>
+
+                        <Link to="/Widgets" className="dropdown-item">
+                            Bootstrap
+                        </Link>
+
                       <NavDropdown.Divider />
-                      <NavDropdown.Item onClick={ this.logout }>
+  
+                       <NavDropdown.Item onClick={ this.handleLogout }>
                           <FormattedMessage
                               id="logout"
                           />
