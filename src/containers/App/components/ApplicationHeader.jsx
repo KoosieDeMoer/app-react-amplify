@@ -39,7 +39,9 @@ class Header extends Component {
           window.location.href = "/";
         })
         .catch((error) => {
-          // if we fail here it is probably due to token being invalid - do nothing
+          // if we fail here it is probably due to token being invalid - clean up
+          window.cache.auth.access = null;
+          window.cache.storage.set("access", null);
           window.location.href = "/";
         });
     } else {
