@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@aws-amplify/ui-react": "^0.2.8",
     "@popperjs/core": "^2.2.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "aws-amplify": "^3.0.16",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
@@ -26,7 +28,7 @@
     "spacetime": "^6.4.3"
   },
   "scripts": {
-  	"pretty": "prettier --write \"./src/**/*.{js,jsx,json}\"", 
+    "pretty": "prettier --write \"./src/**/*.{js,jsx,json}\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
