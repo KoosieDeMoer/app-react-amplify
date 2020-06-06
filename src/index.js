@@ -22,6 +22,11 @@ import WebApi from "components/Global/WebApi";
 import Toaster from "components/Global/Toaster";
 import localeData from "assets/lang/localeData.json";
 
+import Amplify from "aws-amplify";
+import awsExports from "./aws-exports";
+Amplify.configure(awsExports);
+
+
 store.WebApi = new WebApi();
 // TODO replace window.cache with redux hooks or somesuch
 window.cache = store;

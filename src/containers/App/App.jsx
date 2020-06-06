@@ -10,6 +10,7 @@ import WaitIndicator from "components/Global/WaitIndicator";
 import LoginModal from "components/Modal/LoginModal";
 import InactivityModal from "components/Modal/InactivityModal";
 import { authenticated, appRoutes } from "routes/app";
+import { withAuthenticator } from '@aws-amplify/ui-react'
 
 import "./App.css";
 
@@ -89,4 +90,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withAuthenticator(App)
